@@ -7,8 +7,8 @@
 
 import UIKit
 
+// MARK: UIColor에 hex코드를 사용할 수 있는 Extension
 extension UIColor {
-    // MARK: UIColor에 hex코드를 사용할 수 있는 Extension
     convenience init(hexCode: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hexCode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         
