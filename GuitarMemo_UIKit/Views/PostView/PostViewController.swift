@@ -27,6 +27,7 @@ class PostViewController: UIViewController {
             textLabel.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor)
         ])
         
+        self.view.backgroundColor = .white
         // Do any additional setup after loading the view.
     }
     

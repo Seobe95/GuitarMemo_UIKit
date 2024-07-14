@@ -7,34 +7,34 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
-    
+class MainViewController: UITabBarController {    
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeViewController()
     }
     
     private func initializeViewController() {
-        let memoNavigationViewController = setNaviagtionController(rootViewController: MemoViewController(), 
-                                                                      title: "Memo",
-                                                                      image: "note.text",
-                                                                      tag: 0)
+        let practiceNavigationViewController = setNaviagtionController(rootViewController: PracticeViewController(),
+                                                                   title: "Practice",
+                                                                   image: "note.text",
+                                                                   tag: 0)
         let tunerNavigationViewcontroller = setNaviagtionController(rootViewController: TunerViewController(),
-                                                                       title: "Tuner",
-                                                                       image: "tuningfork",
-                                                                       tag: 1)
+                                                                    title: "Tuner",
+                                                                    image: "tuningfork",
+                                                                    tag: 1)
         
         let settingNavigationViewcontroller = setNaviagtionController(rootViewController: SettingViewController(),
-                                                                         title: "Setting",
-                                                                         image: "gear",
-                                                                         tag: 2)
+                                                                      title: "Setting",
+                                                                      image: "gear",
+                                                                      tag: 2)
         
-        self.viewControllers = [memoNavigationViewController,
+        self.viewControllers = [practiceNavigationViewController,
                                 tunerNavigationViewcontroller,
                                 settingNavigationViewcontroller]
         
-        setTabbarColors(tintColor: "141414", unselectedTintColor: "a9a9a9")
+        setTabbarItemColors(tintColor: "141414", unselectedTintColor: "a9a9a9")
     }
+    
     
     /// setNaviagtionController
     /// ViewController를 NavigationContoller로 변환하는 메서드
@@ -45,18 +45,25 @@ class MainViewController: UITabBarController {
     ///     - tag: TabbarItem에서 사용될 태그
     /// - Returns: UINavigationController가 Return됩니다.
     private func setNaviagtionController(rootViewController: UIViewController, title: String, image: String, tag: Int) -> UINavigationController {
-        rootViewController.tabBarItem = UITabBarItem(title: title, image: UIImage(systemName: image), tag: tag)
+        rootViewController.tabBarItem = UITabBarItem(title: title,
+                                                     image: UIImage(systemName: image),
+                                                     tag: tag)
         rootViewController.view.backgroundColor = .white
-        let navContoller = UINavigationController(rootViewController: rootViewController)
-        return navContoller
+        let navigationContoller = UINavigationController(rootViewController: rootViewController)
+        return navigationContoller
     }
     
     /// setTabbarColors
+    /// TabbarItem의 색상을 설정합니다.
     /// - Parameters:
     ///     - tintColor: TabbarItem이 선택되었을 때의 hexcode
     ///     - unselectedTintColor: TabbarItem이 선택되지 않았을 때의 hexcode
-    private func setTabbarColors(tintColor: String, unselectedTintColor: String) {
+    private func setTabbarItemColors(tintColor: String, unselectedTintColor: String) {
         self.tabBar.tintColor = UIColor(hexCode: tintColor)
         self.tabBar.unselectedItemTintColor = UIColor(hexCode: unselectedTintColor)
     }
+}
+
+#Preview {
+    MainViewController()
 }
